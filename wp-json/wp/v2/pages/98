@@ -1,0 +1,226 @@
+		<div class="lab_row" style="padding-top: 107px;">
+		<div class="lab__right">
+			<h1>Генератор этикеток и штрихкодов</h1>
+			<p>Сервис BARCODER от <a href="https://wbcon.ru/">WBCON.RU</a> — это онлайн генератор этикеток и штрихкодов. Он создан для того, чтобы упростить генерацию этикеток на товар, штрихкодов (баркодов) и наклеек на дополнительную упаковку.</p>
+			<p>Достаточно заполнить данные о товарах и нажать одну кнопку, чтобы получить готовый PDF – сохранить себе или просто отправить на печать. Сервис имеет гибкие настройки и подойдет любому поставщику маркетплейсов и не только.</p>
+			<p>Вопросы, пожелания и предложения по работе сервиса можете направлять на почту: <a href="mailto:wbcon@yandex.ru">wbcon@yandex.ru</a></p>
+			<p>
+			<a class="btn btn-purple btn-block" href="https://barcoder.wbcon.ru/generator-qr/"><img src="https://barcoder.wbcon.ru/wp-content/uploads/2022/10/IMG_5827.jpg">Генератор qr-кода для поставки wildberries fbo</a>
+			<a class="btn btn-blue btn-block" href="https://barcoder.wbcon.ru/qr/"><img src="https://barcoder.wbcon.ru/wp-content/uploads/2022/10/IMG_5827.jpg">Универсальный генератор QR</a>
+		</p>
+			<!-- <p style="color: red;">Ведутся работы по модернизации, возможная некорректная работа</p> -->
+			<div id="app">
+				<div class="clear"><button class="btn btn-warning">Очистить таблицу</button></div>
+				<div class="check_name"><div class="form-group form-check"><div><input type="checkbox" class="form-check-input" id="same_seller_name"> <label class="form-check-label" for="same_seller_name">Одинаковое название поставщика на всех наклейках</label></div></div></div>
+				
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Штрихкод*</th>
+							<th>Артикул</th>
+							<th>Цвет</th>
+							<th class="small">Размер</th>
+							<th>Название товара</th>
+							<th>Наименование продавца</th>
+							<th class="small">Количество*</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" data-name="barcode" placeholder="Штрихкод" class="form-control"></td>
+							<td><input type="text" data-name="sku" placeholder="Артикул" class="form-control"></td>
+							<td><input type="text" data-name="color" placeholder="Цвет" class="form-control"></td>
+							<td class="small"><input  data-name="size" type="text" placeholder="Размер" class="form-control"></td>
+							<td><input type="text" data-name="name" placeholder="Название товара" class="form-control"></td>
+							<td><input type="text" data-name="sup" placeholder="Наименование продавца" class="form-control sup"></td>
+
+							
+
+							<td class="small"><input type="number" data-name="quantity" min="0" placeholder="Количество" class="form-control" value="1"></td>
+							<td><button class="btn btn-danger">X</button></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="add_tr"><button class="btn btn-primary btn-block">+ Добавить строку</button></div>
+				<p style="margin-top: 5px;">* - параметры Штрихкод, Наименование продавца, Количество обязательны для заполнения. Штрихкод также проверяется на валидность</p>
+				<div class="attr">
+					<div class="form-group">
+						<label for="">Формат штрихкода</label>
+						<select id="formats" class="form-select"><option value="EAN-13">EAN-13</option><option value="CODE-128">CODE-128</option></select>
+					</div>
+					<div class="form-group">
+						<div><input type="radio" name="type_list" id="type_a4" value="A4" checked="checked"> <label for="type_a4">А4</label></div>
+						<!-- <div><input type="radio" name="type_list" id="type_a4l" value="A4l"> <label for="type_a4l">А4 L</label></div>  --> 
+						<div><input type="radio" name="type_list" id="type_termo" value="TERMO"> <label for="type_termo">Термоэтикетка</label></div>
+					</div>
+					<!-- <p class="pols" style="font-size: 14px;">Может быть полезным: <a href="/articles/kak-pechatat" target="_blank">Отключите масштабирование при печати</a></p> -->
+					<div class="form-group">
+						<label for="">Размер наклейки (мм, ШхВ)</label>
+						<select id="razm" class="form-select">
+							<option value="1">38x21.2</option>
+							<option value="17">43x25</option>
+							<option value="2">48.5x25.4</option>
+							<option value="3">52x28.5</option>
+							<option value="4" selected="select">52x34</option>
+							<option value="5">52.5x29.7</option>
+							<option value="6">52.5x35</option>
+							<option value="7">58x40</option>
+							<option value="8">70x37</option>
+							<option value="9">64x33.4</option>
+							<option value="10">64.6x33.8</option>
+							<option value="11">64.6x34.8</option>
+							<option value="12">66.7x46</option>
+							<option value="13">70x42</option>
+							<option value="14">70x42.3</option>
+							<option value="15">70x49.5</option>
+							<option value="16">105x48</option>
+						</select>
+						<label for="">Или введите свой размер (мм. ШхВ) - макс. 210х297 (А4)</label>
+						<div class="form-inline">
+
+							<input type="number" class="form-control" data-min="1" data-max="210" name="" id="razmw">
+							<input type="number" class="form-control" data-min="1" data-max="297" name="" id="razmh">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="">Размер шрифта (px)</label>
+						<select id="text_size" class="form-select">
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11" selected="select">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+						</select>
+					</div>
+					<!-- <div class="form-group">
+						<label for="">Сделать отступ внутри страницы (только для А4)</label>
+						<select id="page_pad" class="form-select">
+							<option value="0" selected="select">Нет</option>
+							<option value="1">Да</option>
+						</select>
+					</div> -->
+					<div class="form-group">
+						
+						<div>После выбора нужных полей, они появятся в таблице для заполнения</div>
+						<div><input type="checkbox" name="dopv" id="field_date" data-name="Срок годности"> <label for="field_date">Срок годности</label></div>
+						<div><input type="checkbox" name="dopv" id="field_country" data-name="Страна"> <label for="field_country">Страна производства</label></div>
+						<div><input type="checkbox" name="dopv" id="field_brand" data-name="Бренд"> <label for="field_brand">Бренд</label></div>
+						<div><input type="checkbox" name="dopv" id="field_make" data-name="Состав"> <label for="field_make">Состав</label></div>
+						<div><input type="checkbox" name="dopv" id="field_manuf" data-name="Производитель"> <label for="field_manuf">Производитель</label></div>
+						<div><input type="checkbox" name="dopv" id="field_free" data-name="Свободная надпись"> <label for="field_free">Свободная надпись</label></div>
+					</div>
+					<div class="form-group"><div><input type="checkbox" id="concat_color_size" checked="checked"> <label for="concat_color_size">Цвет и Размер в одну строку</label></div></div>
+					<div class="form-group"><div><input type="checkbox" id="split_info"> <label for="split_info">Разделить Штрихкод и информацию на две наклейки</label></div></div>
+					<div class="form-group"><div><input type="checkbox" id="add_grid"> <label for="add_grid">Линии обреза</label></div></div>
+					<div class="form-group"><div><input type="checkbox" id="EAC"> <label for="EAC">EAC</label></div></div>
+					<div class="form-group"><div><input type="checkbox" id="NO_REQUIRED_CERT"> <label for="NO_REQUIRED_CERT">Товар не подлежит обязательной сертификации</label></div></div>
+					<div class="form-group">
+						<label for="">Сделать отступ внутри страницы по X по левому краю (мм) +-30</label>
+						<div class="mysl">
+						<select id="padd_x" class="form-select">
+							<option value="0" selected="select">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option>						</select>
+							</div>
+					</div>
+					
+
+
+
+
+<div class="form-group">
+						<label for="">Сделать отступ внутри страницы по X по правому краю (мм) +-30</label>
+						<div class="mysl">
+						<select id="padd_x2" class="form-select">
+							<option value="0" selected="select">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option>						</select>
+							</div>
+					</div>
+					<div class="form-group">
+						<label for="">Сделать отступ внутри страницы по Y по верхнему краю (мм) +-30</label>
+						<div class="mysl">
+						<select id="padd_y" class="form-select">
+							<option value="0" selected="select">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option>						</select>
+							</div>
+					</div>
+					<div class="form-group">
+						<label for="">Сделать отступ внутри страницы по Y по нижнему краю (мм) +-30</label>
+						<div class="mysl">
+						<select id="padd_y2" class="form-select">
+							<option value="0" selected="select">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option>						</select>
+							</div>
+					</div>
+
+
+
+
+					<div class="form-group">
+						<label for="">Положение текста</label>
+						<select class="form-select" id="rasp">
+							<option value="left" selected="select">Слева</option>
+							<option value="center">По центру</option>
+						</select>
+					</div>
+					<div style="display: none;" class="g-recaptcha" data-sitekey="6Lcdn9ocAAAAACdAxR3TtkqsWd0b3LMW1sX02s5t"></div>
+					<div class="" style="margin-top: 5px;"><button id="send_gen" class="btn btn-success btn-block">Получить наклейки</button></div>
+					<div class="" style="margin-top: 5px;"><button id="send_prew" class="btn btn-info btn-block">Предпросмотр</button></div>
+					<div class="" style="margin-top: 5px;"><a href="https://t.me/WBCON_PARSER_BOT" class="btn btn-info btn-block" style="background-color: #c8a2c8;border-color: #c8a2c8;">Телеграм-БОТ по генерации ШТРИХКОДОВ</a></div>
+					<div class="alert alert-danger" style="display: none; margin-top: 5px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<div class="modal fade" id="modal-example" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- заголовок -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Закрыть">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Генерация файла</h4>
+            </div>
+            <!-- содержимое -->
+            <div class="modal-body">
+                <p>
+               Ожидайте
+                </p>
+            </div>
+            <!-- подвал -->
+        </div>
+    </div>
+</div>
+<script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
+
+<script type="text/javascript">
+	jQuery( document ).ready(function() {
+		if (jQuery.cookie('send_lim') >= 20) {
+				jQuery('.g-recaptcha').show();
+			}
+		genTable();
+		function genTable(){
+
+    let ii = 5;
+    jQuery('input[name=dopv]').each(function (index, value){
+    let name = jQuery(this).attr('id');
+
+                let namer = jQuery(this).attr('data-name');
+                jQuery('table thead th:eq('+ii+')').after('<th class="'+name+'">'+namer+'</th>');
+                jQuery('table tbody tr').each(function (index, value){
+                    jQuery(this).find('td:eq('+ii+')').after('<td class="'+name+'"><input type="text" data-name="'+name+'" placeholder="'+namer+'" class="form-control"></td>');
+                });
+                
+                ii++;
+});
+}
+	});
+
+</script>
+
+{"id":98,"date":"2021-10-06T13:18:00","date_gmt":"2021-10-06T10:18:00","guid":{"rendered":"https:\/\/barcoder.wbcon.ru\/?page_id=98"},"modified":"2022-10-28T23:09:43","modified_gmt":"2022-10-28T20:09:43","slug":"%d0%b3%d0%b5%d0%bd%d0%b5%d1%80%d0%b0%d1%82%d0%be%d1%80-%d1%8d%d1%82%d0%b8%d0%ba%d0%b5%d1%82%d0%be%d0%ba-%d0%b8-%d1%88%d1%82%d1%80%d0%b8%d1%85%d0%ba%d0%be%d0%b4%d0%be%d0%b2-%d0%bd%d0%b0-%d1%82%d0%be","status":"publish","type":"page","link":"https:\/\/barcoder.wbcon.ru\/","title":{"rendered":"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438"},"content":{"rendered":"<p>[vc_row][vc_column][vc_column_text]<\/p>\r\n\r\n<p><!-- \/wp:shortcode -->\u00a0<\/p>\r\n<p><!-- wp:paragraph --><!-- \/wp:paragraph -->\u00a0<\/p>\r\n<p>[\/vc_column_text][\/vc_column][\/vc_row]<\/p>","protected":false},"excerpt":{"rendered":"<p>[vc_row][vc_column][vc_column_text] \u00a0 \u00a0 [\/vc_column_text][\/vc_column][\/vc_row]<\/p>\n","protected":false},"author":1,"featured_media":0,"parent":0,"menu_order":0,"comment_status":"closed","ping_status":"closed","template":"","meta":[],"acf":[],"yoast_head":"<!-- This site is optimized with the Yoast SEO plugin v19.9 - https:\/\/yoast.com\/wordpress\/plugins\/seo\/ -->\n<title>\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438 - \u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)<\/title>\n<meta name=\"description\" content=\"\u0421\u0435\u0440\u0432\u0438\u0441 BARCODER \u043e\u0442 WBCON.RU \u2014 \u044d\u0442\u043e \u043e\u043d\u043b\u0430\u0439\u043d \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a, \u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432 \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u0438 QR \u043a\u043e\u0434\u043e\u0432. \u041e\u043d \u0441\u043e\u0437\u0434\u0430\u043d \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u043d\u0430 \u0442\u043e\u0432\u0430\u0440, \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 (\u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432) \u0438 \u043d\u0430\u043a\u043b\u0435\u0435\u043a \u043d\u0430 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0443.\" \/>\n<meta name=\"robots\" content=\"index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1\" \/>\n<link rel=\"canonical\" href=\"https:\/\/barcoder.wbcon.ru\/\" \/>\n<meta property=\"og:locale\" content=\"ru_RU\" \/>\n<meta property=\"og:type\" content=\"article\" \/>\n<meta property=\"og:title\" content=\"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438 - \u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)\" \/>\n<meta property=\"og:description\" content=\"\u0421\u0435\u0440\u0432\u0438\u0441 BARCODER \u043e\u0442 WBCON.RU \u2014 \u044d\u0442\u043e \u043e\u043d\u043b\u0430\u0439\u043d \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a, \u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432 \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u0438 QR \u043a\u043e\u0434\u043e\u0432. \u041e\u043d \u0441\u043e\u0437\u0434\u0430\u043d \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u043d\u0430 \u0442\u043e\u0432\u0430\u0440, \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 (\u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432) \u0438 \u043d\u0430\u043a\u043b\u0435\u0435\u043a \u043d\u0430 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0443.\" \/>\n<meta property=\"og:url\" content=\"https:\/\/barcoder.wbcon.ru\/\" \/>\n<meta property=\"og:site_name\" content=\"\u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)\" \/>\n<meta property=\"article:modified_time\" content=\"2022-10-28T20:09:43+00:00\" \/>\n<meta name=\"twitter:card\" content=\"summary_large_image\" \/>\n<meta name=\"twitter:label1\" content=\"\u041f\u0440\u0438\u043c\u0435\u0440\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f \u0434\u043b\u044f \u0447\u0442\u0435\u043d\u0438\u044f\" \/>\n\t<meta name=\"twitter:data1\" content=\"1 \u043c\u0438\u043d\u0443\u0442\u0430\" \/>\n<script type=\"application\/ld+json\" class=\"yoast-schema-graph\">{\"@context\":\"https:\/\/schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https:\/\/barcoder.wbcon.ru\/\",\"url\":\"https:\/\/barcoder.wbcon.ru\/\",\"name\":\"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438 - \u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)\",\"isPartOf\":{\"@id\":\"https:\/\/barcoder.wbcon.ru\/#website\"},\"datePublished\":\"2021-10-06T10:18:00+00:00\",\"dateModified\":\"2022-10-28T20:09:43+00:00\",\"description\":\"\u0421\u0435\u0440\u0432\u0438\u0441 BARCODER \u043e\u0442 WBCON.RU \u2014 \u044d\u0442\u043e \u043e\u043d\u043b\u0430\u0439\u043d \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a, \u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432 \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u0438 QR \u043a\u043e\u0434\u043e\u0432. \u041e\u043d \u0441\u043e\u0437\u0434\u0430\u043d \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u043d\u0430 \u0442\u043e\u0432\u0430\u0440, \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 (\u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432) \u0438 \u043d\u0430\u043a\u043b\u0435\u0435\u043a \u043d\u0430 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0443.\",\"breadcrumb\":{\"@id\":\"https:\/\/barcoder.wbcon.ru\/#breadcrumb\"},\"inLanguage\":\"ru-RU\",\"potentialAction\":[{\"@type\":\"ReadAction\",\"target\":[\"https:\/\/barcoder.wbcon.ru\/\"]}]},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\/\/barcoder.wbcon.ru\/#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"\u0413\u043b\u0430\u0432\u043d\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430\",\"item\":\"https:\/\/barcoder.wbcon.ru\/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438\"}]},{\"@type\":\"WebSite\",\"@id\":\"https:\/\/barcoder.wbcon.ru\/#website\",\"url\":\"https:\/\/barcoder.wbcon.ru\/\",\"name\":\"\u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)\",\"description\":\"\u0421\u0435\u0440\u0432\u0438\u0441 BARCODER \u043e\u0442 WBCON.RU \u2014 \u044d\u0442\u043e \u043e\u043d\u043b\u0430\u0439\u043d \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432. \u041e\u043d \u0441\u043e\u0437\u0434\u0430\u043d \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u043d\u0430 \u0442\u043e\u0432\u0430\u0440, \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 (\u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432) \u0438 \u043d\u0430\u043a\u043b\u0435\u0435\u043a \u043d\u0430 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0443.\",\"potentialAction\":[{\"@type\":\"SearchAction\",\"target\":{\"@type\":\"EntryPoint\",\"urlTemplate\":\"https:\/\/barcoder.wbcon.ru\/?s={search_term_string}\"},\"query-input\":\"required name=search_term_string\"}],\"inLanguage\":\"ru-RU\"}]}<\/script>\n<!-- \/ Yoast SEO plugin. -->","yoast_head_json":{"title":"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438 - \u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)","description":"\u0421\u0435\u0440\u0432\u0438\u0441 BARCODER \u043e\u0442 WBCON.RU \u2014 \u044d\u0442\u043e \u043e\u043d\u043b\u0430\u0439\u043d \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a, \u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432 \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u0438 QR \u043a\u043e\u0434\u043e\u0432. \u041e\u043d \u0441\u043e\u0437\u0434\u0430\u043d \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u043d\u0430 \u0442\u043e\u0432\u0430\u0440, \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 (\u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432) \u0438 \u043d\u0430\u043a\u043b\u0435\u0435\u043a \u043d\u0430 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0443.","robots":{"index":"index","follow":"follow","max-snippet":"max-snippet:-1","max-image-preview":"max-image-preview:large","max-video-preview":"max-video-preview:-1"},"canonical":"https:\/\/barcoder.wbcon.ru\/","og_locale":"ru_RU","og_type":"article","og_title":"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438 - \u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)","og_description":"\u0421\u0435\u0440\u0432\u0438\u0441 BARCODER \u043e\u0442 WBCON.RU \u2014 \u044d\u0442\u043e \u043e\u043d\u043b\u0430\u0439\u043d \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a, \u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432 \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u0438 QR \u043a\u043e\u0434\u043e\u0432. \u041e\u043d \u0441\u043e\u0437\u0434\u0430\u043d \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u043d\u0430 \u0442\u043e\u0432\u0430\u0440, \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 (\u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432) \u0438 \u043d\u0430\u043a\u043b\u0435\u0435\u043a \u043d\u0430 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0443.","og_url":"https:\/\/barcoder.wbcon.ru\/","og_site_name":"\u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)","article_modified_time":"2022-10-28T20:09:43+00:00","twitter_card":"summary_large_image","twitter_misc":{"\u041f\u0440\u0438\u043c\u0435\u0440\u043d\u043e\u0435 \u0432\u0440\u0435\u043c\u044f \u0434\u043b\u044f \u0447\u0442\u0435\u043d\u0438\u044f":"1 \u043c\u0438\u043d\u0443\u0442\u0430"},"schema":{"@context":"https:\/\/schema.org","@graph":[{"@type":"WebPage","@id":"https:\/\/barcoder.wbcon.ru\/","url":"https:\/\/barcoder.wbcon.ru\/","name":"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438 - \u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)","isPartOf":{"@id":"https:\/\/barcoder.wbcon.ru\/#website"},"datePublished":"2021-10-06T10:18:00+00:00","dateModified":"2022-10-28T20:09:43+00:00","description":"\u0421\u0435\u0440\u0432\u0438\u0441 BARCODER \u043e\u0442 WBCON.RU \u2014 \u044d\u0442\u043e \u043e\u043d\u043b\u0430\u0439\u043d \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a, \u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432 \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u0438 QR \u043a\u043e\u0434\u043e\u0432. \u041e\u043d \u0441\u043e\u0437\u0434\u0430\u043d \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u043d\u0430 \u0442\u043e\u0432\u0430\u0440, \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 (\u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432) \u0438 \u043d\u0430\u043a\u043b\u0435\u0435\u043a \u043d\u0430 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0443.","breadcrumb":{"@id":"https:\/\/barcoder.wbcon.ru\/#breadcrumb"},"inLanguage":"ru-RU","potentialAction":[{"@type":"ReadAction","target":["https:\/\/barcoder.wbcon.ru\/"]}]},{"@type":"BreadcrumbList","@id":"https:\/\/barcoder.wbcon.ru\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"\u0413\u043b\u0430\u0432\u043d\u0430\u044f \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0430","item":"https:\/\/barcoder.wbcon.ru\/"},{"@type":"ListItem","position":2,"name":"\u0421\u043e\u0437\u0434\u0430\u0442\u044c \u043d\u0430\u043a\u043b\u0435\u0439\u043a\u0438"}]},{"@type":"WebSite","@id":"https:\/\/barcoder.wbcon.ru\/#website","url":"https:\/\/barcoder.wbcon.ru\/","name":"\u0413\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 \u043d\u0430 \u0442\u043e\u0432\u0430\u0440\u044b \u0434\u043b\u044f \u043c\u0430\u0440\u043a\u0435\u0442\u043f\u043b\u0435\u0439\u0441\u0430 \u0412\u0430\u0439\u043b\u0434\u0431\u0435\u0440\u0440\u0438\u0437 (Wildberries), \u041e\u0437\u043e\u043d (OZON)","description":"\u0421\u0435\u0440\u0432\u0438\u0441 BARCODER \u043e\u0442 WBCON.RU \u2014 \u044d\u0442\u043e \u043e\u043d\u043b\u0430\u0439\u043d \u0433\u0435\u043d\u0435\u0440\u0430\u0442\u043e\u0440 \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u0438 \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432. \u041e\u043d \u0441\u043e\u0437\u0434\u0430\u043d \u0434\u043b\u044f \u0442\u043e\u0433\u043e, \u0447\u0442\u043e\u0431\u044b \u0443\u043f\u0440\u043e\u0441\u0442\u0438\u0442\u044c \u0433\u0435\u043d\u0435\u0440\u0430\u0446\u0438\u044e \u044d\u0442\u0438\u043a\u0435\u0442\u043e\u043a \u043d\u0430 \u0442\u043e\u0432\u0430\u0440, \u0448\u0442\u0440\u0438\u0445\u043a\u043e\u0434\u043e\u0432 (\u0431\u0430\u0440\u043a\u043e\u0434\u043e\u0432) \u0438 \u043d\u0430\u043a\u043b\u0435\u0435\u043a \u043d\u0430 \u0434\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u0443\u044e \u0443\u043f\u0430\u043a\u043e\u0432\u043a\u0443.","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/barcoder.wbcon.ru\/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"ru-RU"}]}},"_links":{"self":[{"href":"https:\/\/barcoder.wbcon.ru\/wp-json\/wp\/v2\/pages\/98"}],"collection":[{"href":"https:\/\/barcoder.wbcon.ru\/wp-json\/wp\/v2\/pages"}],"about":[{"href":"https:\/\/barcoder.wbcon.ru\/wp-json\/wp\/v2\/types\/page"}],"author":[{"embeddable":true,"href":"https:\/\/barcoder.wbcon.ru\/wp-json\/wp\/v2\/users\/1"}],"replies":[{"embeddable":true,"href":"https:\/\/barcoder.wbcon.ru\/wp-json\/wp\/v2\/comments?post=98"}],"version-history":[{"count":7,"href":"https:\/\/barcoder.wbcon.ru\/wp-json\/wp\/v2\/pages\/98\/revisions"}],"predecessor-version":[{"id":159,"href":"https:\/\/barcoder.wbcon.ru\/wp-json\/wp\/v2\/pages\/98\/revisions\/159"}],"wp:attachment":[{"href":"https:\/\/barcoder.wbcon.ru\/wp-json\/wp\/v2\/media?parent=98"}],"curies":[{"name":"wp","href":"https:\/\/api.w.org\/{rel}","templated":true}]}}
